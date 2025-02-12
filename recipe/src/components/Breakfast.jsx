@@ -4,8 +4,6 @@ import omelette from "../assets/omlettelegume.jpg"
 import "./Recipe.css";
 import { motion } from "framer-motion";
 
-
-
 const recipes = [
     {
         id: 1,
