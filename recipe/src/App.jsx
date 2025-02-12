@@ -22,7 +22,7 @@ const App = () => {
   }, []);
 
   return (
-    <Router basename='/recipe'>
+    <Router>
       <Navbar />
       {loading ? (
         <div className="loader">
