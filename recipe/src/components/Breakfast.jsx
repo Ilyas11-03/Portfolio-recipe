@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Modal from "react-modal"; // Assurez-vous d'importer le modal
 import omelette from "../assets/omlettelegume.jpg"
+import pancakes from "../assets/img_1.jpg"
+import smoothie from "../assets/img_2.jpg"
 import "./Recipe.css";
 import { motion } from "framer-motion";
 

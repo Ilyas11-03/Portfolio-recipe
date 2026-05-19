@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css'; // Assurez-vous d'avoir un fichier CSS pour les styles
 

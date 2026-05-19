@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import hotdog from "../assets/hotdogrmbg.png"
 import plat from "../assets/plat2.png"
 import plat2 from "../assets/plat3.png"
@@ -9,8 +8,19 @@ import Massimo from "../assets/massimo.jpg"
 import Redzepi from "../assets/redzepi.jpg"
 import Heston from "../assets/heston.jpg"
 import Thomas from "../assets/Thomas.jpg"
+import img1 from "../assets/img_1.jpg"
+import img2 from "../assets/img_2.jpg"
+import img3 from "../assets/img_3.jpg"
+import img4 from "../assets/img_4.jpg"
+import img5 from "../assets/img_5.jpg"
+import img6 from "../assets/img_6.jpg"
+import img7 from "../assets/img_7.jpg"
+import img8 from "../assets/img_8.jpg"
+import img9 from "../assets/img_9.jpg"
+import img10 from "../assets/img_10.jpg"
 import CustomImage from "./Custom";
-import { motion,  useScroll} from "framer-motion";
+import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
 import Instagram from "@mui/icons-material/Instagram";
 import 'aos/dist/aos.css';
 import ContactUs from "./ContactUs";
@@ -22,15 +32,15 @@ function Home() {
 
     
     const images = [
-        "../src/assets/img_1.jpg",
-        "../src/assets/img_2.jpg",
-        "../src/assets/img_3.jpg",
-        "../src/assets/img_4.jpg",
-        "../src/assets/img_5.jpg",
-        "../src/assets/img_6.jpg",
-        "../src/assets/img_7.jpg",
-        "../src/assets/img_8.jpg",
-        "../src/assets/img_9.jpg",
+        img1,
+        img2,
+        img3,
+        img4,
+        img5,
+        img6,
+        img7,
+        img8,
+        img9,
     ]
 
     const list = [
@@ -128,17 +138,17 @@ function Home() {
 
         <div className="section improve-skills">
             <div className="col img">
-                <img src="/src/assets/img_10.jpg"  id="sushi" />
+                <img src={img10}  id="sushi" />
             </div>
             <div className="col">
                 <h1 className="improve">Improve your <br /> Cullinarry Skills</h1>
-                <li className="list">
+                <ul className="list">
                 { list.map((item, index) => (
-                    <p className="skill" key={index}> {item}</p>
+                    <li className="skill" key={index}>{item}</li>
                 ))}
-                </li>
+                </ul>
                
-                <button className="btn3" href="/signup">Sign Up Now</button>
+                <Link to="/signup" className="btn3">Sign Up Now</Link>
             </div>
             <div className="col gallery">
                

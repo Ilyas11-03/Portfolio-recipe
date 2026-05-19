@@ -1,4 +1,3 @@
-import React from 'react';
 import './ContactUs.css';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
@@ -17,7 +16,7 @@ const ContactUs = () => {
         <p><strong>Call Us:</strong> +212 611366340</p>
       </div>
       <div className="info-box">
-        < LocalPhoneIcon/>
+        <LocalPhoneIcon />
         <p><strong>Email Us:</strong> ilyas.aboulkassim@gmail.com</p>
       </div>
       <div className="info-box">

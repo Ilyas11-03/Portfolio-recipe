@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Modal from "react-modal"; // Assurez-vous d'importer le modal
 import carbonara from "../assets/carbonara.jpg";
 import saladcesar from "../assets/salade.jpeg";

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';  // Importation de Swiper et des slides
 import 'swiper/css';  // Importation des styles de base de Swiper
 import 'swiper/css/effect-cards';  // Importation des styles pour l'effet cards
