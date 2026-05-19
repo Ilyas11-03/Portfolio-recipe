@@ -1,23 +1,12 @@
-Portfolio Recipe
-Portfolio Recipe est un site web personnel conçu pour présenter des recettes culinaires de manière élégante et interactive. Ce projet met en valeur des compétences en développement web front-end, avec une attention particulière portée à l'esthétique et à l'expérience utilisateur.
+# React + Vite
 
-🔗 Démo en ligne
-👉 portfolio-recipe.vercel.app
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-🚀 Fonctionnalités principales
-Affichage dynamique de recettes avec images et descriptions
+Currently, two official plugins are available:
 
-Interface utilisateur responsive adaptée à tous les appareils
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-Navigation fluide entre les différentes sections du site
+## Expanding the ESLint configuration
 
-Design moderne et épuré mettant en avant le contenu culinaire
-
-🛠️ Technologies utilisées
-HTML5
-
-CSS3
-
-JavaScript
-
-Vercel pour le déploiement
+If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
