@@ -63,13 +63,6 @@ A modern, responsive recipe sharing web application built with React, Vite, and 
 - **Axios** 1.7 - HTTP client
 - **Yup** 1.4 - Form validation
 
-### Backend (Node.js)
-- **Express** 4.21 - Web framework
-- **MySQL/MySQL2** 3.11 - Database
-- **JWT** 9.0 - Authentication
-- **bcrypt** 5.1 - Password hashing
-- **CORS** 2.8 - Cross-origin handling
-- **Body Parser** 1.20 - Request parsing
 
 ### UI/UX Enhancements
 - **React Hot Toast** 2.4 - Toast notifications
@@ -126,7 +119,6 @@ recipe/
 ### Prerequisites
 - **Node.js** >= 14.x
 - **npm** or **yarn**
-- **MySQL** database (for backend)
 
 ### Installation
 
