@@ -100,8 +100,8 @@ const Navbar = () => {
             <Link to="/" onClick={() => setIsMobileOpen(false)}>Home</Link>
             <Link to="/recipes" onClick={() => setIsMobileOpen(false)}>Recipes</Link>
             <Link to="/recipe-builder" onClick={() => setIsMobileOpen(false)}>Recipe Builder</Link>
-            <Link to="/about" onClick={() => setIsMobileOpen(false)}>About</Link>
-            <Link to="/contact" onClick={() => setIsMobileOpen(false)}>Contact</Link>
+            {/* <Link to="/about" onClick={() => setIsMobileOpen(false)}>About</Link> */}
+            {/* <Link to="/contact" onClick={() => setIsMobileOpen(false)}>Contact</Link> */}
             
             <div className="mobile-divider"></div>
             

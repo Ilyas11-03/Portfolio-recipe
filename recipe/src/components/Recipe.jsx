@@ -1,4 +1,3 @@
-// src/components/Recipe.jsx
 import { useState } from "react";
 import Modal from "react-modal";
 import { motion, AnimatePresence } from "framer-motion";
@@ -30,6 +29,7 @@ const recipes = [
         cookTime: '15 min',
         servings: 4,
         difficulty: 'Facile',
+        category: 'Italien',
         ingredients: [
             'Pâtes (spaghetti ou fettuccine) : 400 g',
             'Lardons ou pancetta : 150 g',
@@ -40,15 +40,7 @@ const recipes = [
             'Sel : au goût',
             'Persil frais : pour garnir (optionnel)'
         ],
-        preparation: 
-        'Faire cuire les pâtes dans une grande casserole d\'eau salée selon les instructions du paquet. ' +
-        'Dans une poêle, faire revenir les lardons ou la pancetta jusqu\'à ce qu\'ils soient croustillants. ' +
-        'Dans un bol, battre les œufs avec le fromage râpé et le poivre noir. ' +
-        'Une fois les pâtes cuites, les égoutter tout en réservant un peu d\'eau de cuisson. ' +
-        'Ajouter les pâtes chaudes dans la poêle avec les lardons, puis retirer du feu. ' +
-        'Incorporer le mélange d\'œufs et de fromage en remuant rapidement pour éviter que les œufs ne cuisent trop. ' +
-        'Si la sauce est trop épaisse, ajouter un peu d\'eau de cuisson des pâtes pour l\'alléger. ' +
-        'Servir immédiatement, garni de persil et de fromage supplémentaire si désiré.'
+        preparation: 'Faire cuire les pâtes dans une grande casserole d\'eau salée selon les instructions du paquet. Dans une poêle, faire revenir les lardons ou la pancetta jusqu\'à ce qu\'ils soient croustillants. Dans un bol, battre les œufs avec le fromage râpé et le poivre noir. Une fois les pâtes cuites, les égoutter tout en réservant un peu d\'eau de cuisson. Ajouter les pâtes chaudes dans la poêle avec les lardons, puis retirer du feu. Incorporer le mélange d\'œufs et de fromage en remuant rapidement pour éviter que les œufs ne cuisent trop. Si la sauce est trop épaisse, ajouter un peu d\'eau de cuisson des pâtes pour l\'alléger. Servir immédiatement, garni de persil et de fromage supplémentaire si désiré.'
     },
     {
         id: 2,
@@ -59,6 +51,7 @@ const recipes = [
         cookTime: '10 min',
         servings: 2,
         difficulty: 'Facile',
+        category: 'Américain',
         ingredients: [
             'Laitue romaine : 1 (déchirée en morceaux)',
             'Poulet : 2 poitrines (grillées et tranchées)',
@@ -71,12 +64,7 @@ const recipes = [
             'Huile d\'olive : 4 cuillères à soupe',
             'Sel et poivre : au goût'
         ],
-        preparation: 
-        'Dans un bol, mélanger l\'ail écrasé, le jus de citron, la moutarde, le sel et le poivre. ' +
-        'Incorporer lentement l\'huile d\'olive pour émulsionner la vinaigrette. ' +
-        'Dans un grand saladier, ajouter la laitue, les tranches de poulet, les croutons et les anchois (si utilisés). ' +
-        'Verser la vinaigrette sur la salade et mélanger délicatement. ' +
-        'Ajouter le parmesan râpé sur le dessus et servir immédiatement.'
+        preparation: 'Dans un bol, mélanger l\'ail écrasé, le jus de citron, la moutarde, le sel et le poivre. Incorporer lentement l\'huile d\'olive pour émulsionner la vinaigrette. Dans un grand saladier, ajouter la laitue, les tranches de poulet, les croutons et les anchois (si utilisés). Verser la vinaigrette sur la salade et mélanger délicatement. Ajouter le parmesan râpé sur le dessus et servir immédiatement.'
     },
     {
         id: 3,
@@ -87,6 +75,7 @@ const recipes = [
         cookTime: '40 min',
         servings: 6,
         difficulty: 'Moyen',
+        category: 'Français',
         ingredients: [
             'Pâte brisée : 1 (préparée ou achetée)',
             'Pommes : 4-5 (type Golden ou Granny Smith)',
@@ -96,15 +85,7 @@ const recipes = [
             'Jus de citron : 1 cuillère à soupe',
             'Oeuf : 1 (pour la dorure, optionnel)'
         ],
-        preparation: 
-    'Préchauffer le four à 180°C (350°F). ' +
-    'Étaler la pâte brisée dans un moule à tarte et piquer le fond avec une fourchette. ' +
-    'Éplucher et couper les pommes en quartiers, puis les mélanger avec le jus de citron, le sucre et la cannelle. ' +
-    'Disposer les pommes sur la pâte en les chevauchant. ' +
-    'Arroser avec le beurre fondu. ' +
-    'Si désiré, battre l\'œuf et le badigeonner sur les bords de la tarte pour une belle dorure. ' +
-    'Enfourner pendant environ 30-40 minutes, jusqu\'à ce que les pommes soient tendres et la pâte dorée. ' +
-    'Laisser refroidir avant de servir.'
+        preparation: 'Préchauffer le four à 180°C (350°F). Étaler la pâte brisée dans un moule à tarte et piquer le fond avec une fourchette. Éplucher et couper les pommes en quartiers, puis les mélanger avec le jus de citron, le sucre et la cannelle. Disposer les pommes sur la pâte en les chevauchant. Arroser avec le beurre fondu. Si désiré, battre l\'œuf et le badigeonner sur les bords de la tarte pour une belle dorure. Enfourner pendant environ 30-40 minutes, jusqu\'à ce que les pommes soient tendres et la pâte dorée. Laisser refroidir avant de servir.'
     },
     {
         id: 4,
@@ -115,6 +96,7 @@ const recipes = [
         cookTime: '30 min',
         servings: 4,
         difficulty: 'Moyen',
+        category: 'Indien',
         ingredients: [
             'Poulet : 1 kg (coupé en morceaux)',
             'Oignons : 2 (hachés)',
@@ -127,14 +109,7 @@ const recipes = [
             'Sel : au goût',
             'Coriandre fraîche : pour garnir'
         ],
-        preparation: 
-        'Dans une grande poêle, chauffer l\'huile et faire revenir les oignons jusqu\'à ce qu\'ils soient translucides. ' +
-        'Ajouter l\'ail et le gingembre, puis cuire pendant 1-2 minutes. ' +
-        'Incorporer les morceaux de poulet et faire dorer de tous les côtés. ' +
-        'Ajouter les tomates et la pâte de curry, puis cuire pendant quelques minutes. ' +
-        'Verser le lait de coco, mélanger et laisser mijoter à feu doux pendant 20-30 minutes, jusqu\'à ce que le poulet soit bien cuit. ' +
-        'Rectifier l\'assaisonnement avec du sel. ' +
-        'Servir chaud, garni de coriandre fraîche, avec du riz ou du pain.'
+        preparation: 'Dans une grande poêle, chauffer l\'huile et faire revenir les oignons jusqu\'à ce qu\'ils soient translucides. Ajouter l\'ail et le gingembre, puis cuire pendant 1-2 minutes. Incorporer les morceaux de poulet et faire dorer de tous les côtés. Ajouter les tomates et la pâte de curry, puis cuire pendant quelques minutes. Verser le lait de coco, mélanger et laisser mijoter à feu doux pendant 20-30 minutes, jusqu\'à ce que le poulet soit bien cuit. Rectifier l\'assaisonnement avec du sel. Servir chaud, garni de coriandre fraîche, avec du riz ou du pain.'
     },
     {
         id: 5,
@@ -145,25 +120,16 @@ const recipes = [
         cookTime: '25 min',
         servings: 4,
         difficulty: 'Facile',
+        category: 'Espagnol',
         ingredients: [
             'Pommes de terre : 500 g (pelées et coupées en fines rondelles)',
             'Oignons : 1 (haché, optionnel)',
-            'Œufs : 4',
+            'ufs : 4',
             'Huile d\'olive : 100 ml',
             'Sel : au goût',
             'Poivre : au goût'
         ],
-        preparation: 
-    'Dans une grande poêle, chauffer l\'huile d\'olive à feu moyen. ' +
-    'Ajouter les rondelles de pommes de terre et les oignons (si utilisés). ' +
-    'Faire cuire pendant environ 15-20 minutes, en remuant de temps en temps, jusqu\'à ce que les pommes de terre soient tendres et légèrement dorées. ' +
-    'Égoutter les pommes de terre pour enlever l\'excès d\'huile et les laisser refroidir légèrement. ' +
-    'Dans un bol, battre les œufs et assaisonner avec du sel et du poivre. ' +
-    'Incorporer les pommes de terre cuites dans le mélange d\'œufs. ' +
-    'Dans la même poêle, ajouter un peu d\'huile si nécessaire et verser le mélange. ' +
-    'Cuire à feu doux pendant environ 5-7 minutes, jusqu\'à ce que le dessous soit doré. ' +
-    'Retourner la tortilla à l\'aide d\'une assiette et cuire l\'autre côté pendant encore 5 minutes. ' +
-    'Servir chaud ou à température ambiante, coupée en parts.'
+        preparation: 'Dans une grande poêle, chauffer l\'huile d\'olive à feu moyen. Ajouter les rondelles de pommes de terre et les oignons (si utilisés). Faire cuire pendant environ 15-20 minutes, en remuant de temps en temps, jusqu\'à ce que les pommes de terre soient tendres et légèrement dorées. Égoutter les pommes de terre pour enlever l\'excès d\'huile et les laisser refroidir légèrement. Dans un bol, battre les œufs et assaisonner avec du sel et du poivre. Incorporer les pommes de terre cuites dans le mélange d\'œufs. Dans la même poêle, ajouter un peu d\'huile si nécessaire et verser le mélange. Cuire à feu doux pendant environ 5-7 minutes, jusqu\'à ce que le dessous soit doré. Retourner la tortilla à l\'aide d\'une assiette et cuire l\'autre côté pendant encore 5 minutes. Servir chaud ou à température ambiante, coupée en parts.'
     },
     {
         id: 6,
@@ -174,6 +140,7 @@ const recipes = [
         cookTime: '15 min',
         servings: 8,
         difficulty: 'Facile',
+        category: 'Français',
         ingredients: [
             'Farine : 250 g',
             'Lait : 500 ml',
@@ -183,17 +150,7 @@ const recipes = [
             'Sel : une pincée',
             'Extrait de vanille : 1 cuillère à café (optionnel)'
         ],
-        preparation: 
-        'Dans un grand bol, mélanger la farine et le sel. ' +
-        'Faire un puits au centre et ajouter les œufs, puis commencer à mélanger. ' +
-        'Incorporer progressivement le lait pour éviter les grumeaux. ' +
-        'Ajouter le beurre fondu et le sucre (si utilisé), puis l\'extrait de vanille. ' +
-        'Laisser reposer la pâte pendant environ 30 minutes. ' +
-        'Chauffer une poêle antiadhésive à feu moyen et verser une petite louche de pâte. ' +
-        'Incliner la poêle pour répartir la pâte uniformément. ' +
-        'Cuire pendant environ 1-2 minutes de chaque côté, jusqu\'à ce qu\'elles soient dorées. ' +
-        'Répéter avec le reste de la pâte. ' +
-        'Servir les crêpes avec du sucre, de la confiture, du chocolat ou tout autre garniture de votre choix.'
+        preparation: 'Dans un grand bol, mélanger la farine et le sel. Faire un puits au centre et ajouter les œufs, puis commencer à mélanger. Incorporer progressivement le lait pour éviter les grumeaux. Ajouter le beurre fondu et le sucre (si utilisé), puis l\'extrait de vanille. Laisser reposer la pâte pendant environ 30 minutes. Chauffer une poêle antiadhésive à feu moyen et verser une petite louche de pâte. Incliner la poêle pour répartir la pâte uniformément. Cuire pendant environ 1-2 minutes de chaque côté, jusqu\'à ce qu\'elles soient dorées. Répéter avec le reste de la pâte. Servir les crêpes avec du sucre, de la confiture, du chocolat ou tout autre garniture de votre choix.'
     },
     {
         id: 7,
@@ -204,6 +161,7 @@ const recipes = [
         cookTime: '60 min',
         servings: 6,
         difficulty: 'Moyen',
+        category: 'Marocain',
         ingredients: [
             'Poulet : 1 kg (coupé en morceaux)',
             'Oignons : 2 (hachés)',
@@ -217,14 +175,7 @@ const recipes = [
             'Bouillon : 500 ml',
             'Persil et coriandre frais : pour garnir'
         ],
-        preparation: 
-            'Mélanger le poulet avec les épices, l\'ail, le sel et le poivre. Laisser mariner pendant 30 minutes. ' +
-            'Chauffer l\'huile d\'olive dans une grande casserole, ajouter le poulet et le faire dorer. ' +
-            'Retirer le poulet et ajouter les oignons. Faire revenir jusqu\'à ce qu\'ils soient translucides. ' +
-            'Ajouter les carottes et les pommes de terre, puis faire revenir quelques minutes. ' +
-            'Remettre le poulet dans la casserole avec les légumes, ajouter le bouillon et les olives. ' +
-            'Incorporer les citrons confits et les herbes fraîches. ' +
-            'Couvrir et laisser mijoter à feu doux pendant 45 minutes à 1 heure.'
+        preparation: 'Mélanger le poulet avec les épices, l\'ail, le sel et le poivre. Laisser mariner pendant 30 minutes. Chauffer l\'huile d\'olive dans une grande casserole, ajouter le poulet et le faire dorer. Retirer le poulet et ajouter les oignons. Faire revenir jusqu\'à ce qu\'ils soient translucides. Ajouter les carottes et les pommes de terre, puis faire revenir quelques minutes. Remettre le poulet dans la casserole avec les légumes, ajouter le bouillon et les olives. Incorporer les citrons confits et les herbes fraîches. Couvrir et laisser mijoter à feu doux pendant 45 minutes à 1 heure.'
     },
     {
         id: 8,
@@ -235,6 +186,7 @@ const recipes = [
         cookTime: '20 min',
         servings: 4,
         difficulty: 'Moyen',
+        category: 'Libanais',
         ingredients: [
             'Poulet : 1 kg (coupé en fines lanières)',
             'Yaourt grec : 200 g',
@@ -245,11 +197,7 @@ const recipes = [
             'Légumes : tomates, concombres, oignons rouges',
             'Sauce tahini : pour servir'
         ],
-        preparation: 
-    'Mélanger le poulet avec le yaourt, le jus de citron, l\'ail et les épices. Mariner au moins 2 heures. ' +
-    'Faire cuire le poulet dans une poêle très chaude ou au four jusqu\'à ce qu\'il soit doré. ' +
-    'Chauffer les pains pita et les garnir avec le poulet, les légumes frais et la sauce tahini. ' +
-    'Servir immédiatement avec des quartiers de citron.'
+        preparation: 'Mélanger le poulet avec le yaourt, le jus de citron, l\'ail et les épices. Mariner au moins 2 heures. Faire cuire le poulet dans une poêle très chaude ou au four jusqu\'à ce qu\'il soit doré. Chauffer les pains pita et les garnir avec le poulet, les légumes frais et la sauce tahini. Servir immédiatement avec des quartiers de citron.'
     },
     {
         id: 9,
@@ -260,6 +208,7 @@ const recipes = [
         cookTime: '30 min',
         servings: 6,
         difficulty: 'Difficile',
+        category: 'Marocain',
         ingredients: [
             'Mélange de fruits de mer : 500 g (crevettes, moules, calamars)',
             'Oignons : 2 (hachés)',
@@ -275,13 +224,7 @@ const recipes = [
             'Feuilles de brick : 8-10',
             'Amandes effilées : pour garnir'
         ],
-        preparation: 
-    'Dans une grande poêle, chauffer l\'huile d\'olive et faire revenir les oignons jusqu\'à ce qu\'ils soient translucides. ' +
-    'Ajouter l\'ail, le poivron et les tomates, puis cuire pendant 5 minutes. ' +
-    'Incorporer les épices, puis ajouter les fruits de mer et mélanger délicatement. ' +
-    'Verser le vin blanc et laisser mijoter pendant 10 minutes, jusqu\'à ce que les fruits de mer soient cuits. ' +
-    'Rectifier l\'assaisonnement avec du sel et du poivre. ' +
-    'Ajouter le persil haché juste avant de servir, puis garnir de quartiers de citron et d\'amandes.'
+        preparation: 'Dans une grande poêle, chauffer l\'huile d\'olive et faire revenir les oignons jusqu\'à ce qu\'ils soient translucides. Ajouter l\'ail, le poivron et les tomates, puis cuire pendant 5 minutes. Incorporer les épices, puis ajouter les fruits de mer et mélanger délicatement. Verser le vin blanc et laisser mijoter pendant 10 minutes, jusqu\'à ce que les fruits de mer soient cuits. Rectifier l\'assaisonnement avec du sel et du poivre. Ajouter le persil haché juste avant de servir, puis garnir de quartiers de citron et d\'amandes.'
     },
     {
         id: 10,
@@ -292,6 +235,7 @@ const recipes = [
         cookTime: '30 min',
         servings: 8,
         difficulty: 'Facile',
+        category: 'Dessert',
         ingredients: [
             'Chocolat noir : 200 g',
             'Beurre : 100 g',
@@ -302,16 +246,7 @@ const recipes = [
             'Sel : une pincée',
             'Extrait de vanille : 1 cuillère à café (optionnel)'
         ],
-        preparation: 
-    'Préchauffer le four à 180°C (350°F). ' +
-    'Faire fondre le chocolat et le beurre au bain-marie ou au micro-ondes, puis laisser refroidir légèrement. ' +
-    'Dans un grand bol, battre les œufs et le sucre jusqu\'à ce que le mélange devienne mousseux. ' +
-    'Ajouter le chocolat fondu et l\'extrait de vanille, puis mélanger. ' +
-    'Incorporer la farine, la poudre à lever et le sel, en mélangeant jusqu\'à obtenir une pâte homogène. ' +
-    'Verser la préparation dans un moule à cake beurré et fariné. ' +
-    'Enfourner pendant 25-30 minutes, ou jusqu\'à ce qu\'un couteau inséré au centre en ressorte propre. ' +
-    'Laisser refroidir avant de démouler. ' +
-    'Servir avec un peu de sucre glace ou une ganache au chocolat si désiré.'
+        preparation: 'Préchauffer le four à 180°C (350°F). Faire fondre le chocolat et le beurre au bain-marie ou au micro-ondes, puis laisser refroidir légèrement. Dans un grand bol, battre les œufs et le sucre jusqu\'à ce que le mélange devienne mousseux. Ajouter le chocolat fondu et l\'extrait de vanille, puis mélanger. Incorporer la farine, la poudre à lever et le sel, en mélangeant jusqu\'à obtenir une pâte homogène. Verser la préparation dans un moule à cake beurré et fariné. Enfourner pendant 25-30 minutes, ou jusqu\'à ce qu\'un couteau inséré au centre en ressorte propre. Laisser refroidir avant de démouler. Servir avec un peu de sucre glace ou une ganache au chocolat si désiré.'
     },
     {
         id: 11,
@@ -322,6 +257,7 @@ const recipes = [
         cookTime: '35 min',
         servings: 6,
         difficulty: 'Moyen',
+        category: 'Italien',
         ingredients: [
             'Lasagnes : 12 feuilles',
             'Viande hachée (bœuf ou mélange) : 400 g',
@@ -340,21 +276,101 @@ const recipes = [
             'Farine : 50 g',
             'Noix de muscade : une pincée (optionnel)'
         ],
-        preparation: 
-            'Préchauffer le four à 180°C (350°F). ' +
-            'Dans une poêle, faire revenir l\'oignon et l\'ail dans un peu d\'huile jusqu\'à ce qu\'ils soient translucides. ' +
-            'Ajouter la viande hachée et cuire jusqu\'à ce qu\'elle soit dorée. ' +
-            'Incorporer les tomates concassées, le concentré de tomate, les herbes, le sel et le poivre. ' +
-            'Laisser mijoter pendant 15 minutes. ' +
-            'Dans une casserole, faire fondre le beurre, ajouter la farine et cuire pendant 1 minute. ' +
-            'Incorporer le lait progressivement tout en remuant pour éviter les grumeaux. ' +
-            'Ajouter une pincée de noix de muscade, puis cuire jusqu\'à épaississement. ' +
-            'Dans un plat allant au four, étaler une couche de sauce à la viande, puis une couche de feuilles de lasagne. ' +
-            'Ajouter une couche de ricotta, puis une couche de béchamel. ' +
-            'Répéter les couches jusqu\'à épuisement des ingrédients, en terminant par une couche de béchamel et le fromage mozzarella et parmesan sur le dessus. ' +
-            'Enfourner pendant 30-35 minutes, ou jusqu\'à ce que le dessus soit doré et bouillonnant. ' +
-            'Laisser reposer quelques minutes avant de servir.'
+        preparation: 'Préchauffer le four à 180°C (350°F). Dans une poêle, faire revenir l\'oignon et l\'ail dans un peu d\'huile jusqu\'à ce qu\'ils soient translucides. Ajouter la viande hachée et cuire jusqu\'à ce qu\'elle soit dorée. Incorporer les tomates concassées, le concentré de tomate, les herbes, le sel et le poivre. Laisser mijoter pendant 15 minutes. Dans une casserole, faire fondre le beurre, ajouter la farine et cuire pendant 1 minute. Incorporer le lait progressivement tout en remuant pour éviter les grumeaux. Ajouter une pincée de noix de muscade, puis cuire jusqu\'à épaississement. Dans un plat allant au four, étaler une couche de sauce à la viande, puis une couche de feuilles de lasagne. Ajouter une couche de ricotta, puis une couche de béchamel. Répéter les couches jusqu\'à épuisement des ingrédients, en terminant par une couche de béchamel et le fromage mozzarella et parmesan sur le dessus. Enfourner pendant 30-35 minutes, ou jusqu\'à ce que le dessus soit doré et bouillonnant. Laisser reposer quelques minutes avant de servir.'
+    },
+    // 🌟 NEW RECIPES ADDED BELOW
+    {
+        id: 12,
+        title: 'Pad Thaï',
+        description: 'Nouilles sautées aux crevettes et cacahuètes.',
+        image: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&q=80&w=600',
+        prepTime: '20 min',
+        cookTime: '15 min',
+        servings: 4,
+        difficulty: 'Moyen',
+        category: 'Asiatique',
+        ingredients: ['Nouilles de riz : 250 g', 'Crevettes : 200 g', 'Œufs : 2', 'Sauce soja : 3 c.à.s', 'Sucre de palme : 2 c.à.s', 'Jus de tamarin : 2 c.à.s', 'Ail : 2 gousses', 'Cacahuètes concassées : 50 g', 'Pousses de soja : 100 g', 'Citron vert : 1'],
+        preparation: 'Faire tremper les nouilles dans l\'eau tiède 20 min. Dans un wok, faire revenir l\'ail et les crevettes. Pousser sur le côté, casser les œufs et brouiller rapidement. Ajouter les nouilles égouttées, la sauce soja, le sucre et le tamarin. Mélanger vigoureusement 3 min. Ajouter les pousses de soja et les cacahuètes. Servir avec un quartier de citron vert.'
+    },
+    {
+        id: 13,
+        title: 'Bowl Végétarien Quinoa',
+        description: 'Un repas sain et équilibré.',
+        image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=600',
+        prepTime: '15 min',
+        cookTime: '20 min',
+        servings: 2,
+        difficulty: 'Facile',
+        category: 'Healthy',
+        ingredients: ['Quinoa : 150 g', 'Avocat : 1', 'Pois chiches : 200 g (en conserve)', 'Concombre : 1/2', 'Tomates cerises : 100 g', 'Feta : 50 g', 'Huile d\'olive : 2 c.à.s', 'Citron : 1/2', 'Sel & poivre'],
+        preparation: 'Cuire le quinoa selon les instructions et laisser refroidir. Couper l\'avocat, le concombre et les tomates en dés. Égoutter et rincer les pois chiches. Dans un bol, mélanger le quinoa, les légumes et les pois chiches. Assaisonner avec l\'huile d\'olive, le jus de citron, le sel et le poivre. Parsemer de feta émiettée avant de servir.'
+    },
+    {
+        id: 14,
+        title: 'Tiramisu Classique',
+        description: 'Dessert italien au café et mascarpone.',
+        image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&q=80&w=600',
+        prepTime: '25 min',
+        cookTime: '0 min',
+        servings: 6,
+        difficulty: 'Moyen',
+        category: 'Dessert',
+        ingredients: ['Mascarpone : 250 g', 'ufs : 3', 'Sucre : 80 g', 'Biscuits à la cuillère : 200 g', 'Café expresso froid : 300 ml', 'Cacao amer : pour saupoudrer', 'Extrait de vanille : 1 c.à.c'],
+        preparation: 'Séparer les blancs des jaunes. Fouetter les jaunes avec le sucre et la vanille jusqu\'à blanchiment. Incorporer le mascarpone. Monter les blancs en neige ferme et les incorporer délicatement. Tremper rapidement les biscuits dans le café et les disposer au fond d\'un plat. Alterner couches de biscuits et de crème. Réfrigérer 4h minimum. Saupoudrer de cacao avant de servir.'
+    },
+    {
+        id: 15,
+        title: 'Poulet Tikka Masala',
+        description: 'Curry crémeux aux épices indiennes.',
+        image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&q=80&w=600',
+        prepTime: '20 min',
+        cookTime: '30 min',
+        servings: 4,
+        difficulty: 'Moyen',
+        category: 'Indien',
+        ingredients: ['Poulet : 500 g (dés)', 'Yaourt nature : 100 g', 'Garam masala : 2 c.à.c', 'Curcuma : 1 c.à.c', 'Cumin : 1 c.à.c', 'Tomates concassées : 400 g', 'Crème fraîche : 100 ml', 'Oignon : 1', 'Ail & gingembre : 1 c.à.s chaque', 'Coriandre fraîche'],
+        preparation: 'Mariner le poulet dans le yaourt et les épices 30 min. Faire revenir l\'oignon, l\'ail et le gingembre. Ajouter le poulet et cuire 5 min. Incorporer les tomates et mijoter 15 min. Ajouter la crème, mélanger et cuire 5 min. Garnir de coriandre. Servir avec du riz basmati.'
+    },
+    {
+        id: 16,
+        title: 'Salade Grecque',
+        description: 'Fraîcheur méditerranéenne.',
+        image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&q=80&w=600',
+        prepTime: '10 min',
+        cookTime: '0 min',
+        servings: 4,
+        difficulty: 'Facile',
+        category: 'Méditerranéen',
+        ingredients: ['Concombre : 1', 'Tomates : 3', 'Poivron vert : 1', 'Oignon rouge : 1/2', 'Olives Kalamata : 100 g', 'Feta : 150 g', 'Huile d\'olive : 4 c.à.s', 'Origan séché : 1 c.à.c', 'Sel & poivre'],
+        preparation: 'Couper les légumes en gros morceaux. Disposer dans un saladier. Ajouter les olives et la feta émiettée. Arroser d\'huile d\'olive, saupoudrer d\'origan, saler et poivrer. Mélanger délicatement et servir frais.'
+    },
+    {
+        id: 17,
+        title: 'Risotto aux Champignons',
+        description: 'Crémeux et parfumé.',
+        image: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&q=80&w=600',
+        prepTime: '10 min',
+        cookTime: '25 min',
+        servings: 4,
+        difficulty: 'Difficile',
+        category: 'Italien',
+        ingredients: ['Riz arborio : 300 g', 'Champignons : 250 g', 'Bouillon de légumes : 1 L', 'Vin blanc : 100 ml', 'Parmesan : 50 g', 'Beurre : 30 g', 'Oignon : 1', 'Huile d\'olive', 'Persil'],
+        preparation: 'Faire revenir l\'oignon et les champignons. Ajouter le riz et nacrer 2 min. Déglacer au vin blanc. Ajouter le bouillon louche par louche en remuant constamment. Cuire 18-20 min jusqu\'à cremosità. Hors feu, incorporer beurre et parmesan. Garnir de persil.'
+    },
+    {
+        id: 18,
+        title: 'Tacos au Poulet Épicé',
+        description: 'Mexicain authentique.',
+        image: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&q=80&w=600',
+        prepTime: '15 min',
+        cookTime: '15 min',
+        servings: 4,
+        difficulty: 'Facile',
+        category: 'Mexicain',
+        ingredients: ['Poulet : 400 g', 'Tortillas de maïs : 8', 'Paprika fumé : 1 c.à.c', 'Cumin : 1 c.à.c', 'Piment en poudre : 1/2 c.à.c', 'Lime : 2', 'Coriandre', 'Oignon rouge', 'Avocat', 'Salsa verde'],
+        preparation: 'Assaisonner le poulet avec les épices et le jus d\'une lime. Griller 6-7 min de chaque côté. Émincer. Chauffer les tortillas. Garnir de poulet, oignon, coriandre, avocat et salsa. Servir avec des quartiers de lime.'
     }
+
 ];
 
 const Recipe = () => {
