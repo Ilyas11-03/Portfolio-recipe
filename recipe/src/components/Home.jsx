@@ -125,7 +125,7 @@ function Home() {
             <div className="col">
                 <h1 className="about">What Are We <br /> About</h1>
                 <p className="info">FoodRecipe is a place where <br /> you can find your soul and <br /> tummy with delicious food <br />recipes of all cuisine.And our services <br /> is absolutely free.So Start Now.</p>
-                <button className="btn2">Explore Now</button>
+                <Link to="/recipe" className="btn2">Explore Now</Link>
             </div>
             <div className="col gallery">
                 { images.map((src, index) => (
@@ -141,7 +141,7 @@ function Home() {
                 <img src={img10}  id="sushi" />
             </div>
             <div className="col">
-                <h1 className="improve">Improve your <br /> Cullinarry Skills</h1>
+                <h1 className="improve">Improve your <br /> Culinary Skills</h1>
                 <ul className="list">
                 { list.map((item, index) => (
                     <li className="skill" key={index}>{item}</li>
@@ -175,28 +175,22 @@ function Home() {
                 <a className="instaramsey"><Instagram/></a><span className="cuisine-ramsey"><strong>Kitchen:</strong><em> British</em></span>
         </div>
 
-         <div className="section-chiefs-ramsey">
-            <img src={Ramsey} className="picRamsey"/>
-            <h2 className="ramsey">Gordon Ramsey</h2>
-                <a className="instaramsey"><Instagram/></a><span className="cuisine-ramsey"><strong>Kitchen:</strong><em> British</em></span>
-        </div>
-
         <div className="section-chiefs-massimo">
             <img src={Massimo} className="picMassimo"/>
-            <h2 className="massimo">Masimo Bottura</h2>
-                <a className="instamassimo"><Instagram/></a><span className="cuisine-ramsey"><strong>Kitchen:</strong><em>Italic</em></span>
+            <h2 className="massimo">Massimo Bottura</h2>
+                <a className="instamassimo"><Instagram/></a><span className="cuisine-massimo"><strong>Kitchen:</strong><em>Italian</em></span>
         </div>
 
         <div className="section-chiefs-redzepi">
             <img src={Redzepi} className="picRedzepi"/>
             <h2 className="redzepi">René Redzepi</h2>
-                <a className="instaredzepi"><Instagram/></a><span className="cuisine-redzepi"><strong>Kitchen:</strong><em>Albanian</em></span>
+                <a className="instaredzepi"><Instagram/></a><span className="cuisine-redzepi"><strong>Kitchen:</strong><em>Nordic</em></span>
         </div>
 
         <div className="section-chiefs-heston">
             <img src={Heston} className="picHeston"/>
             <h2 className="heston">Heston Blumenthal</h2>
-                <a className="instaheston"><Instagram/></a><span className="cuisine-redzepi"><strong>Kitchen:</strong><em>Britich</em></span>
+                <a className="instaheston"><Instagram/></a><span className="cuisine-heston"><strong>Kitchen:</strong><em>British</em></span>
         </div>
 
         <div className="section-chiefs-thomas">

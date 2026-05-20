@@ -46,6 +46,7 @@ const Navbar = () => {
           {[
             { path: '/', label: 'Home' },
             { path: '/recipes', label: 'Recipes' },
+            { path: '/recipe-builder', label: 'Recipe Builder' },
             { path: '/about', label: 'About' },
             { path: '/contact', label: 'Contact' }
           ].map((item) => (
@@ -98,6 +99,7 @@ const Navbar = () => {
           >
             <Link to="/" onClick={() => setIsMobileOpen(false)}>Home</Link>
             <Link to="/recipes" onClick={() => setIsMobileOpen(false)}>Recipes</Link>
+            <Link to="/recipe-builder" onClick={() => setIsMobileOpen(false)}>Recipe Builder</Link>
             <Link to="/about" onClick={() => setIsMobileOpen(false)}>About</Link>
             <Link to="/contact" onClick={() => setIsMobileOpen(false)}>Contact</Link>
             

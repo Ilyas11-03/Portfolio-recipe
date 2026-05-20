@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Recipe from './components/Recipe';
+import RecipeBuilder from './components/RecipeBuilder';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Footer from './components/Footer';
@@ -33,6 +34,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/recipes" element={<Recipe />} />
+          <Route path="/recipe-builder" element={<RecipeBuilder />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
