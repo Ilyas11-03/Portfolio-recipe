@@ -1,5 +1,11 @@
+// src/components/Recipe.jsx
 import { useState } from "react";
-import Modal from "react-modal"; // Assurez-vous d'importer le modal
+import Modal from "react-modal";
+import { motion, AnimatePresence } from "framer-motion";
+import { Search, X, Clock, ChefHat, ArrowLeft, Heart, Share2, Printer } from "lucide-react";
+import './Recipe.css';
+
+// Import your images
 import carbonara from "../assets/carbonara.jpg";
 import saladcesar from "../assets/salade.jpeg";
 import tarte from "../assets/tarteauxpomme.jpg";
@@ -11,8 +17,8 @@ import shawarma from "../assets/shawarma-lebanon.jpg";
 import pastilla from "../assets/pastilla.jpg";
 import cakechocolat from "../assets/cakechocolat.jpg";
 import lasagne from "../assets/lasagnecomplet.jpg";
-import { motion } from "framer-motion";
-import './Recipe.css'
+
+Modal.setAppElement('#root');
 
 const recipes = [
     {
@@ -20,6 +26,10 @@ const recipes = [
         title: 'Pâtes Carbonara',
         description: 'Une recette classique italienne.',
         image: carbonara,
+        prepTime: '20 min',
+        cookTime: '15 min',
+        servings: 4,
+        difficulty: 'Facile',
         ingredients: [
             'Pâtes (spaghetti ou fettuccine) : 400 g',
             'Lardons ou pancetta : 150 g',
@@ -30,7 +40,6 @@ const recipes = [
             'Sel : au goût',
             'Persil frais : pour garnir (optionnel)'
         ],
-        
         preparation: 
         'Faire cuire les pâtes dans une grande casserole d\'eau salée selon les instructions du paquet. ' +
         'Dans une poêle, faire revenir les lardons ou la pancetta jusqu\'à ce qu\'ils soient croustillants. ' +
@@ -40,13 +49,16 @@ const recipes = [
         'Incorporer le mélange d\'œufs et de fromage en remuant rapidement pour éviter que les œufs ne cuisent trop. ' +
         'Si la sauce est trop épaisse, ajouter un peu d\'eau de cuisson des pâtes pour l\'alléger. ' +
         'Servir immédiatement, garni de persil et de fromage supplémentaire si désiré.'
-    
     },
     {
         id: 2,
         title: 'Salade César',
         description: 'Une salade rafraîchissante avec du poulet.',
         image: saladcesar,
+        prepTime: '15 min',
+        cookTime: '10 min',
+        servings: 2,
+        difficulty: 'Facile',
         ingredients: [
             'Laitue romaine : 1 (déchirée en morceaux)',
             'Poulet : 2 poitrines (grillées et tranchées)',
@@ -59,20 +71,22 @@ const recipes = [
             'Huile d\'olive : 4 cuillères à soupe',
             'Sel et poivre : au goût'
         ],
-        
         preparation: 
         'Dans un bol, mélanger l\'ail écrasé, le jus de citron, la moutarde, le sel et le poivre. ' +
         'Incorporer lentement l\'huile d\'olive pour émulsionner la vinaigrette. ' +
         'Dans un grand saladier, ajouter la laitue, les tranches de poulet, les croutons et les anchois (si utilisés). ' +
         'Verser la vinaigrette sur la salade et mélanger délicatement. ' +
         'Ajouter le parmesan râpé sur le dessus et servir immédiatement.'
-    
     },
     {
         id: 3,
         title: 'Tarte aux pommes',
         description: 'Un dessert traditionnel.',
         image: tarte,
+        prepTime: '30 min',
+        cookTime: '40 min',
+        servings: 6,
+        difficulty: 'Moyen',
         ingredients: [
             'Pâte brisée : 1 (préparée ou achetée)',
             'Pommes : 4-5 (type Golden ou Granny Smith)',
@@ -82,7 +96,6 @@ const recipes = [
             'Jus de citron : 1 cuillère à soupe',
             'Oeuf : 1 (pour la dorure, optionnel)'
         ],
-        
         preparation: 
     'Préchauffer le four à 180°C (350°F). ' +
     'Étaler la pâte brisée dans un moule à tarte et piquer le fond avec une fourchette. ' +
@@ -92,13 +105,16 @@ const recipes = [
     'Si désiré, battre l\'œuf et le badigeonner sur les bords de la tarte pour une belle dorure. ' +
     'Enfourner pendant environ 30-40 minutes, jusqu\'à ce que les pommes soient tendres et la pâte dorée. ' +
     'Laisser refroidir avant de servir.'
-
     },
     {
         id: 4,
         title: 'Poulet au curry',
         description: 'Un plat de poulet avec du curry.',
         image: pouletcurry,
+        prepTime: '20 min',
+        cookTime: '30 min',
+        servings: 4,
+        difficulty: 'Moyen',
         ingredients: [
             'Poulet : 1 kg (coupé en morceaux)',
             'Oignons : 2 (hachés)',
@@ -111,7 +127,6 @@ const recipes = [
             'Sel : au goût',
             'Coriandre fraîche : pour garnir'
         ],
-        
         preparation: 
         'Dans une grande poêle, chauffer l\'huile et faire revenir les oignons jusqu\'à ce qu\'ils soient translucides. ' +
         'Ajouter l\'ail et le gingembre, puis cuire pendant 1-2 minutes. ' +
@@ -120,13 +135,16 @@ const recipes = [
         'Verser le lait de coco, mélanger et laisser mijoter à feu doux pendant 20-30 minutes, jusqu\'à ce que le poulet soit bien cuit. ' +
         'Rectifier l\'assaisonnement avec du sel. ' +
         'Servir chaud, garni de coriandre fraîche, avec du riz ou du pain.'
-    
     },
     {
         id: 5,
         title: 'Tortilla',
         description: 'Un plat traditionnel mexicain.',
         image: tortilla,
+        prepTime: '15 min',
+        cookTime: '25 min',
+        servings: 4,
+        difficulty: 'Facile',
         ingredients: [
             'Pommes de terre : 500 g (pelées et coupées en fines rondelles)',
             'Oignons : 1 (haché, optionnel)',
@@ -135,8 +153,6 @@ const recipes = [
             'Sel : au goût',
             'Poivre : au goût'
         ],
-        
-        
         preparation: 
     'Dans une grande poêle, chauffer l\'huile d\'olive à feu moyen. ' +
     'Ajouter les rondelles de pommes de terre et les oignons (si utilisés). ' +
@@ -148,13 +164,16 @@ const recipes = [
     'Cuire à feu doux pendant environ 5-7 minutes, jusqu\'à ce que le dessous soit doré. ' +
     'Retourner la tortilla à l\'aide d\'une assiette et cuire l\'autre côté pendant encore 5 minutes. ' +
     'Servir chaud ou à température ambiante, coupée en parts.'
-
     },
     {
         id: 6,
-        title: 'Crepe',
-        description: 'Une crepe rafraîchissante avec du fromage.',
+        title: 'Crêpe',
+        description: 'Une crêpe légère et savoureuse.',
         image: crepe,
+        prepTime: '10 min',
+        cookTime: '15 min',
+        servings: 8,
+        difficulty: 'Facile',
         ingredients: [
             'Farine : 250 g',
             'Lait : 500 ml',
@@ -164,7 +183,6 @@ const recipes = [
             'Sel : une pincée',
             'Extrait de vanille : 1 cuillère à café (optionnel)'
         ],
-        
         preparation: 
         'Dans un grand bol, mélanger la farine et le sel. ' +
         'Faire un puits au centre et ajouter les œufs, puis commencer à mélanger. ' +
@@ -176,23 +194,16 @@ const recipes = [
         'Cuire pendant environ 1-2 minutes de chaque côté, jusqu\'à ce qu\'elles soient dorées. ' +
         'Répéter avec le reste de la pâte. ' +
         'Servir les crêpes avec du sucre, de la confiture, du chocolat ou tout autre garniture de votre choix.'
-    
     },
     {
         id: 7,
         title: 'Tajine au poulet',
-        description: 'Un plat traditionnel Marocaine.',
+        description: 'Un plat traditionnel Marocain.',
         image: tajinepoulet,
-        ingredients: ['Poulet : 1 kg (coupé en morceaux)', 'Oignons : 2 (hachés)', 'Ail : 2-3 gousses (écrasées)','Carottes : 2 (coupées en rondelles)','Pommes de terre : 2 (coupées en cubes)','Olives : 100 g (vertes ou noires)','Citrons confits : 1 (coupé en quartiers)'],
-        preparation: 
-            'Mélanger le poulet avec les épices, l\'ail, le sel et le poivre. Laisser mariner pendant 30 minutes ,Chauffer l\'huile d\'olive dans une grande casserole, ajouter le poulet et le faire dorer,Retirer le poulet et ajouter les oignons, Faire revenir jusqu\'à ce qu\'ils soient translucides.,Ajouter les carottes et les pommes de terre, puis faire revenir quelques minutes.,Remettre le poulet dans la casserole avec les légumes, ajouter le bouillon et les olives.,Incorporer les citrons confits et les herbes fraîches.,Couvrir et laisser mijoter à feu doux pendant 45 minutes à 1 heure.'
-            
-    },
-    {
-        id: 8,
-        title: 'Shawarma Lebanon',
-        description: 'Un plat traditionnel lebanon.',
-        image: shawarma,
+        prepTime: '30 min',
+        cookTime: '60 min',
+        servings: 6,
+        difficulty: 'Moyen',
         ingredients: [
             'Poulet : 1 kg (coupé en morceaux)',
             'Oignons : 2 (hachés)',
@@ -200,23 +211,55 @@ const recipes = [
             'Carottes : 2 (coupées en rondelles)',
             'Pommes de terre : 2 (coupées en cubes)',
             'Olives : 100 g (vertes ou noires)',
-            'Citrons confits : 1 (coupé en quartiers)'
+            'Citrons confits : 1 (coupé en quartiers)',
+            'Épices : cumin, coriandre, gingembre, safran',
+            'Huile d\'olive : 3 cuillères à soupe',
+            'Bouillon : 500 ml',
+            'Persil et coriandre frais : pour garnir'
         ],
         preparation: 
-    'Mélanger le poulet avec les épices, l\'ail, le sel et le poivre. Laisser mariner pendant 30 minutes. ' +
-    'Chauffer l\'huile d\'olive dans une grande casserole, ajouter le poulet et le faire dorer. ' +
-    'Retirer le poulet et ajouter les oignons. Faire revenir jusqu\'à ce qu\'ils soient translucides. ' +
-    'Ajouter les carottes et les pommes de terre, puis faire revenir quelques minutes. ' +
-    'Remettre le poulet dans la casserole avec les légumes, ajouter le bouillon et les olives. ' +
-    'Incorporer les citrons confits et les herbes fraîches. ' +
-    'Couvrir et laisser mijoter à feu doux pendant 45 minutes à 1 heure.'
-
+            'Mélanger le poulet avec les épices, l\'ail, le sel et le poivre. Laisser mariner pendant 30 minutes. ' +
+            'Chauffer l\'huile d\'olive dans une grande casserole, ajouter le poulet et le faire dorer. ' +
+            'Retirer le poulet et ajouter les oignons. Faire revenir jusqu\'à ce qu\'ils soient translucides. ' +
+            'Ajouter les carottes et les pommes de terre, puis faire revenir quelques minutes. ' +
+            'Remettre le poulet dans la casserole avec les légumes, ajouter le bouillon et les olives. ' +
+            'Incorporer les citrons confits et les herbes fraîches. ' +
+            'Couvrir et laisser mijoter à feu doux pendant 45 minutes à 1 heure.'
+    },
+    {
+        id: 8,
+        title: 'Shawarma Libanais',
+        description: 'Un plat traditionnel libanais.',
+        image: shawarma,
+        prepTime: '30 min',
+        cookTime: '20 min',
+        servings: 4,
+        difficulty: 'Moyen',
+        ingredients: [
+            'Poulet : 1 kg (coupé en fines lanières)',
+            'Yaourt grec : 200 g',
+            'Jus de citron : 3 cuillères à soupe',
+            'Ail : 4 gousses (écrasées)',
+            'Épices : cumin, paprika, cannelle, cardamome',
+            'Pain pita : 4',
+            'Légumes : tomates, concombres, oignons rouges',
+            'Sauce tahini : pour servir'
+        ],
+        preparation: 
+    'Mélanger le poulet avec le yaourt, le jus de citron, l\'ail et les épices. Mariner au moins 2 heures. ' +
+    'Faire cuire le poulet dans une poêle très chaude ou au four jusqu\'à ce qu\'il soit doré. ' +
+    'Chauffer les pains pita et les garnir avec le poulet, les légumes frais et la sauce tahini. ' +
+    'Servir immédiatement avec des quartiers de citron.'
     },
     {
         id: 9,
-        title: 'Pastilla fruit de mer',
-        description: 'Un plat traditionnel Marocaine.',
+        title: 'Pastilla aux fruits de mer',
+        description: 'Un plat traditionnel Marocain.',
         image: pastilla,
+        prepTime: '45 min',
+        cookTime: '30 min',
+        servings: 6,
+        difficulty: 'Difficile',
         ingredients: [
             'Mélange de fruits de mer : 500 g (crevettes, moules, calamars)',
             'Oignons : 2 (hachés)',
@@ -228,7 +271,9 @@ const recipes = [
             'Persil frais : 1 bouquet (haché)',
             'Citron : 1 (coupé en quartiers)',
             'Sel et poivre : au goût',
-            'Épices : paprika, cumin, piment (selon le goût)'
+            'Épices : paprika, cumin, piment (selon le goût)',
+            'Feuilles de brick : 8-10',
+            'Amandes effilées : pour garnir'
         ],
         preparation: 
     'Dans une grande poêle, chauffer l\'huile d\'olive et faire revenir les oignons jusqu\'à ce qu\'ils soient translucides. ' +
@@ -236,15 +281,17 @@ const recipes = [
     'Incorporer les épices, puis ajouter les fruits de mer et mélanger délicatement. ' +
     'Verser le vin blanc et laisser mijoter pendant 10 minutes, jusqu\'à ce que les fruits de mer soient cuits. ' +
     'Rectifier l\'assaisonnement avec du sel et du poivre. ' +
-    'Ajouter le persil haché juste avant de servir, puis garnir de quartiers de citron.'
-        
-
+    'Ajouter le persil haché juste avant de servir, puis garnir de quartiers de citron et d\'amandes.'
     },
     {
         id: 10,
-        title: 'Cake Chocolat Marocaine',
-        description: 'Une recette traditionnel Marocaine.',
+        title: 'Cake au Chocolat',
+        description: 'Un gâteau moelleux au chocolat.',
         image: cakechocolat,
+        prepTime: '20 min',
+        cookTime: '30 min',
+        servings: 8,
+        difficulty: 'Facile',
         ingredients: [
             'Chocolat noir : 200 g',
             'Beurre : 100 g',
@@ -265,13 +312,16 @@ const recipes = [
     'Enfourner pendant 25-30 minutes, ou jusqu\'à ce qu\'un couteau inséré au centre en ressorte propre. ' +
     'Laisser refroidir avant de démouler. ' +
     'Servir avec un peu de sucre glace ou une ganache au chocolat si désiré.'
-        
     },
     {
         id: 11,
-        title: 'Lasagne',
-        description: 'Une recette traditionnel Italienne.',
+        title: 'Lasagnes',
+        description: 'Une recette traditionnelle italienne.',
         image: lasagne,
+        prepTime: '30 min',
+        cookTime: '35 min',
+        servings: 6,
+        difficulty: 'Moyen',
         ingredients: [
             'Lasagnes : 12 feuilles',
             'Viande hachée (bœuf ou mélange) : 400 g',
@@ -304,72 +354,266 @@ const recipes = [
             'Répéter les couches jusqu\'à épuisement des ingrédients, en terminant par une couche de béchamel et le fromage mozzarella et parmesan sur le dessus. ' +
             'Enfourner pendant 30-35 minutes, ou jusqu\'à ce que le dessus soit doré et bouillonnant. ' +
             'Laisser reposer quelques minutes avant de servir.'
-
     }
-
-    
 ];
 
 const Recipe = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedRecipe, setSelectedRecipe] = useState(null);
+    const [likedRecipes, setLikedRecipes] = useState([]);
 
     const filteredRecipes = recipes.filter(recipe =>
-        recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
+        recipe.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        recipe.description.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     const openModal = (recipe) => {
         setSelectedRecipe(recipe);
         setModalIsOpen(true);
+        document.body.style.overflow = 'hidden';
     };
 
     const closeModal = () => {
         setModalIsOpen(false);
         setSelectedRecipe(null);
+        document.body.style.overflow = 'unset';
     };
-  
+
+    const toggleLike = (id, e) => {
+        e.stopPropagation();
+        setLikedRecipes(prev => 
+            prev.includes(id) ? prev.filter(r => r !== id) : [...prev, id]
+        );
+    };
+
+    const getDifficultyColor = (difficulty) => {
+        switch(difficulty) {
+            case 'Facile': return '#10b981';
+            case 'Moyen': return '#f59e0b';
+            case 'Difficile': return '#ef4444';
+            default: return '#6b7280';
+        }
+    };
 
     return (
-        <motion.div initial={{opacity: 0, x: -100}} animate={{opacity: 1, x: 0}} transition={{delay: 1.5, duration: 0.5, type: 'tween', stiffness: 500}}>
-            <h1 className="title6">Recettes</h1>
-            <p className="text6">Voici une liste de recettes qui pourraient vous intéresser</p>
-            <input
-                type="text"
-                placeholder="Rechercher une recette..."
-                value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
-                className="search-input"
-            />
-            <div className="recipe-list">
-                {filteredRecipes.map(recipe => (
-                    <div className="recipe-card" key={recipe.id} onClick={() => openModal(recipe)}>
-                        <img src={recipe.image}  className="recipe-image" />
-                        <h2 className="recipe-title3">{recipe.title}</h2>
-                        <p>{recipe.description}</p>
+        <div className="recipe-page">
+            {/* Hero Header */}
+            <motion.div 
+                className="recipe-header"
+                initial={{ opacity: 0, y: -30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+            >
+                <div className="header-content">
+                    <ChefHat size={48} className="header-icon" />
+                    <h1 className="recipe-title">Nos Recettes</h1>
+                    <p className="recipe-subtitle">Découvrez des plats délicieux et faciles à préparer</p>
+                    
+                    <div className="search-wrapper">
+                        <Search className="search-icon" size={20} />
+                        <input
+                            type="text"
+                            placeholder="Rechercher une recette, un ingrédient..."
+                            value={searchTerm}
+                            onChange={e => setSearchTerm(e.target.value)}
+                            className="search-input"
+                        />
+                        {searchTerm && (
+                            <button 
+                                className="clear-search" 
+                                onClick={() => setSearchTerm('')}
+                            >
+                                <X size={16} />
+                            </button>
+                        )}
                     </div>
-                ))}
-            </div>
-            {selectedRecipe && (
-               
-                <Modal isOpen={modalIsOpen} onRequestClose={closeModal} 
-                >   
-                <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 0.5, duration: 0.5, type: 'tween', stiffness: 300}} >
-                     <img src={selectedRecipe.image} style={{width: '25%'}} className="recipe-image-media" />
-                    <h3>Ingrédients</h3>
-                    <ul>
-                        {selectedRecipe.ingredients.map((ingredient, index) => (
-                            <li key={index}>{ingredient}</li>
-                        ))}
-                    </ul>
-                    <h3>Préparation</h3>
-                    <p>{selectedRecipe.preparation}</p>
-                    <button onClick={closeModal} className="close-button">Fermer</button>
-                    </motion.div>
-                </Modal>
-            )}
+                </div>
             </motion.div>
-       
+
+            {/* Recipe Grid */}
+            <div className="recipe-grid-container">
+                <AnimatePresence mode="wait">
+                    {filteredRecipes.length === 0 ? (
+                        <motion.div 
+                            key="empty"
+                            className="empty-state"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                        >
+                            <ChefHat size={64} className="empty-icon" />
+                            <h3>Aucune recette trouvée</h3>
+                            <p>Essayez avec d'autres mots-clés</p>
+                        </motion.div>
+                    ) : (
+                        <motion.div 
+                            key="grid"
+                            className="recipe-grid"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                        >
+                            {filteredRecipes.map((recipe, index) => (
+                                <motion.div 
+                                    key={recipe.id}
+                                    className="recipe-card"
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: index * 0.05 }}
+                                    whileHover={{ y: -8 }}
+                                    onClick={() => openModal(recipe)}
+                                >
+                                    <div className="card-image-wrapper">
+                                        <img src={recipe.image} alt={recipe.title} className="card-image" />
+                                        <button 
+                                            className="like-button"
+                                            onClick={(e) => toggleLike(recipe.id, e)}
+                                        >
+                                            <Heart 
+                                                size={20} 
+                                                fill={likedRecipes.includes(recipe.id) ? '#ef4444' : 'none'}
+                                                color={likedRecipes.includes(recipe.id) ? '#ef4444' : 'white'}
+                                            />
+                                        </button>
+                                        <span className="difficulty-badge" style={{ background: getDifficultyColor(recipe.difficulty) }}>
+                                            {recipe.difficulty}
+                                        </span>
+                                    </div>
+                                    
+                                    <div className="card-content">
+                                        <h3 className="card-title">{recipe.title}</h3>
+                                        <p className="card-description">{recipe.description}</p>
+                                        
+                                        <div className="card-meta">
+                                            <span className="meta-item">
+                                                <Clock size={14} />
+                                                {recipe.prepTime}
+                                            </span>
+                                            <span className="meta-item">
+                                                👥 {recipe.servings} pers.
+                                            </span>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
+
+            {/* Recipe Modal */}
+            <AnimatePresence>
+                {modalIsOpen && selectedRecipe && (
+                    <Modal
+                        isOpen={modalIsOpen}
+                        onRequestClose={closeModal}
+                        className="recipe-modal"
+                        overlayClassName="recipe-modal-overlay"
+                    >
+                        <motion.div 
+                            className="modal-content"
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            <button className="modal-close" onClick={closeModal}>
+                                <X size={24} />
+                            </button>
+
+                            <div className="modal-header">
+                                <img src={selectedRecipe.image} alt={selectedRecipe.title} className="modal-image" />
+                                <div className="modal-title-section">
+                                    <h2>{selectedRecipe.title}</h2>
+                                    <p>{selectedRecipe.description}</p>
+                                    <div className="modal-actions">
+                                        <button 
+                                            className="action-btn"
+                                            onClick={(e) => toggleLike(selectedRecipe.id, e)}
+                                        >
+                                            <Heart 
+                                                size={18} 
+                                                fill={likedRecipes.includes(selectedRecipe.id) ? '#ef4444' : 'none'}
+                                                color={likedRecipes.includes(selectedRecipe.id) ? '#ef4444' : 'currentColor'}
+                                            />
+                                            {likedRecipes.includes(selectedRecipe.id) ? 'Aimé' : 'Aimer'}
+                                        </button>
+                                        <button className="action-btn">
+                                            <Share2 size={18} /> Partager
+                                        </button>
+                                        <button className="action-btn">
+                                            <Printer size={18} /> Imprimer
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="modal-body">
+                                <div className="recipe-info-grid">
+                                    <div className="info-card">
+                                        <Clock size={24} />
+                                        <div>
+                                            <strong>Préparation</strong>
+                                            <span>{selectedRecipe.prepTime}</span>
+                                        </div>
+                                    </div>
+                                    <div className="info-card">
+                                        <ChefHat size={24} />
+                                        <div>
+                                            <strong>Cuisson</strong>
+                                            <span>{selectedRecipe.cookTime}</span>
+                                        </div>
+                                    </div>
+                                    <div className="info-card">
+                                        👥
+                                        <div>
+                                            <strong>Portions</strong>
+                                            <span>{selectedRecipe.servings} personnes</span>
+                                        </div>
+                                    </div>
+                                    <div className="info-card">
+                                        <span style={{ color: getDifficultyColor(selectedRecipe.difficulty), fontWeight: 'bold' }}>
+                                            {selectedRecipe.difficulty}
+                                        </span>
+                                        <div>
+                                            <strong>Difficulté</strong>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="recipe-section">
+                                    <h3>🥗 Ingrédients</h3>
+                                    <ul className="ingredients-list">
+                                        {selectedRecipe.ingredients.map((ingredient, index) => (
+                                            <motion.li 
+                                                key={index}
+                                                initial={{ opacity: 0, x: -20 }}
+                                                animate={{ opacity: 1, x: 0 }}
+                                                transition={{ delay: index * 0.03 }}
+                                            >
+                                                {ingredient}
+                                            </motion.li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <div className="recipe-section">
+                                    <h3>👨‍🍳 Préparation</h3>
+                                    <p className="preparation-text">{selectedRecipe.preparation}</p>
+                                </div>
+                            </div>
+
+                            <div className="modal-footer">
+                                <button className="btn-primary" onClick={closeModal}>
+                                    <ArrowLeft size={18} /> Retour aux recettes
+                                </button>
+                            </div>
+                        </motion.div>
+                    </Modal>
+                )}
+            </AnimatePresence>
+        </div>
     );
 }
 

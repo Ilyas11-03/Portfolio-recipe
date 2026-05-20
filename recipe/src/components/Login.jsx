@@ -1,104 +1,120 @@
-// src/components/Login.js
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {motion} from "framer-motion"
+import { motion } from "framer-motion";
+import { Mail, Lock, ArrowRight, ChefHat } from "lucide-react";
+import './Login.css';
 
 const Login = () => {
-    const [form, setForm] = useState({
-        email: '',
-        password: ''
-    });
+  const [form, setForm] = useState({ email: '', password: '' });
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
-    const success = () => {
-        toast.success("Login Successful!", {
-            position: "top-center"
-        });
-    }
-    const error = () => {
-        toast.error("Login Failed!", {
-            position: "top-center"
-        });
-    }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
 
-    const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setForm({ ...form, [name]: value });
-    };
+    const storedUser = JSON.parse(localStorage.getItem('user'));
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    setTimeout(() => {
+      if (!form.email || !form.password) {
+        toast.error("Please fill in all fields!", { position: "top-center" });
+      } else if (storedUser && storedUser.email === form.email && storedUser.password === form.password) {
+        toast.success("Login Successful! Welcome back 🎉", { position: "top-center" });
+        setTimeout(() => navigate(-1), 2000);
+      } else {
+        toast.error("Invalid credentials! Please try again.", { position: "top-center" });
+      }
+      setIsLoading(false);
+    }, 1000);
+  };
 
-        const storedUser = JSON.parse(localStorage.getItem('user'));
-
-        if (!form.email || !form.password) {
-            error();
-        } else if (storedUser && storedUser.email === form.email && storedUser.password === form.password) {
-            success();
-            setTimeout(() => {
-                navigate(-1);
-            }, 2000);
-        }
-        else {
-            error();
-            
-        }
-        console.log(form);
-        // Handle login logic here
+  return (
+    <>
+      <ToastContainer />
+      <div className="login-page">
+        <div className="login-background">
+          <div className="floating-shape shape-1"></div>
+          <div className="floating-shape shape-2"></div>
+          <div className="floating-shape shape-3"></div>
+        </div>
         
-    };
+        <motion.div 
+          className="login-container"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="login-header">
+            <motion.div 
+              className="logo-wrapper"
+              whileHover={{ rotate: 15, scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <ChefHat size={48} className="logo-icon" />
+            </motion.div>
+            <h1>Welcome Back</h1>
+            <p>Login to continue your culinary journey</p>
+          </div>
 
-    return (
-        <>
-         <motion.div className="custom-shape-divider-top-1728406894" initial={{opacity: 0, x: -100}} animate={{opacity: 1 , x:0}} transition={{delay: 1.5, duration: 1, type: 'tween', stiffness: 500}}>
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="shape-fill"></path>
-    </svg>
-</motion.div>
+          <form onSubmit={handleSubmit} className="login-form">
+            <div className="input-group">
+              <Mail className="input-icon" size={20} />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-        <motion.div className="form-container" initial={{opacity: 0, x: -100}} animate={{opacity: 1, x: 0}} transition={{delay: 1.5,duration: 1, stiffness: 500}} >
-            <h2 className='login'>Login your account.</h2>
-            <form onSubmit={handleSubmit} className="auth-form">
-                <div className="form-group">
-                    <label htmlFor="email">Email address</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Enter email"
-                        value={form.email}
-                        onChange={handleChange}
-                      
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder="Password"
-                        value={form.password}
-                        onChange={handleChange}
-        
-                    />
-                </div>
-                <button type="submit" className='btn'>Login</button>
-                <p>Don&apos;t have an account? <a href="/signup">Signup</a></p>
-            </form>
-            <ToastContainer/>
+            <div className="input-group">
+              <Lock className="input-icon" size={20} />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={form.password}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <motion.button
+              type="submit"
+              className="login-button"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <span className="loading-spinner"></span>
+              ) : (
+                <>
+                  Login <ArrowRight size={18} />
+                </>
+              )}
+            </motion.button>
+
+            <p className="signup-link">
+              Don't have an account?{' '}
+              <span onClick={() => navigate('/signup')} className="link">
+                Sign Up
+              </span>
+            </p>
+          </form>
         </motion.div>
-
-        <motion.div className="custom-shape-divider-bottom-1728472316"  initial={{opacity: 0, x: -100}} animate={{opacity: 1 , x: 0}} transition={{delay: 1.5, duration: 1, type: 'tween', stiffness: 500}}>
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
-    </svg>
-</motion.div>
-        </>
-    );
+      </div>
+    </>
+  );
 };
 
 export default Login;

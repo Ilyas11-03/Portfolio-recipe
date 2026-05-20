@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import MyCardSwiper from './components/Swipper';  // Importez votre composant Swiper ici
 import { TailSpin } from 'react-loader-spinner';  // Importez le spinner
 
+
 const App = () => {
   const [loading, setLoading] = useState(true);
 
@@ -32,8 +33,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/recipes" element={<Recipe />} />
-          <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       )}
       <MyCardSwiper />

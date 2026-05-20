@@ -23,7 +23,7 @@ import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import Instagram from "@mui/icons-material/Instagram";
 import 'aos/dist/aos.css';
-import ContactUs from "./ContactUs";
+// import ContactUs from "./ContactUs";
 import './Home.css'
 
 
@@ -206,7 +206,7 @@ function Home() {
         </div>
 
         </div>
-    <ContactUs/>
+   
     </div>
     
     
